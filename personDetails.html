@@ -1,0 +1,110 @@
+<html>
+<head>
+    <title>Person details</title>
+</head>
+<body>
+    <script>
+
+        
+function person(id, name, mobileOperator) {
+  this.id=id;
+  this.name = name;
+  this.mobileOperator = mobileOperator;
+}
+
+function mobileOper(id, name, rating)
+{
+    this.id = id;
+    this.name = name;
+    this.rating = rating;
+}
+
+var personInput = prompt("Please enter number of persons");
+
+for(let i=0;i<personInput;i++)
+{
+    var personId = prompt("Please enter person id");
+    var personName = prompt("Please enter person name");
+    var personOper = prompt("Please enter person Operator");
+
+    person[i] = new person(personId,personName,personOper);
+}
+
+var operatorInput = prompt("Please enter number of operator");
+
+for(let i=0;i<operatorInput;i++)
+{
+    var operatorId = prompt("Please enter operator id");
+    var operatorName = prompt("Please enter operator name");
+    var operatorRating = prompt("Please enter Operator rating");
+
+    mobileOper[i] = new mobileOper(operatorId, operatorName,operatorRating);
+}
+
+var search = prompt("Enter the operator to be searched")
+
+for(let j=0;j<mobileOper.length;j++)
+{
+if(search == mobileOper[j].name)
+{
+
+    for(var i=0;i<person.length;i++)
+    {
+        if(mobileOper[j].id == person[i].id)
+        {
+            document.write("ID: "+person[i].id+"<br> Name: "+person[i].name+"<br> Operator ID: "+person[i].mobileOperator+"<br>");
+        }
+    }
+}
+
+else
+{
+    document.write("Inavlid Operator<br>");
+}
+}
+
+
+
+
+for(let i=0;i<mobileOper.length-1;i++)
+{
+    for(let j=0;j<mobileOper.length-i-1;j++)
+    {
+        if(mobileOper[j+1].rating>mobileOper[j].rating)
+        {
+            let temp = mobileOper[j];
+            mobileOper[j] = mobileOper[j+1];
+            mobileOper[j+1] = temp;
+        }
+    }
+}
+
+document.write("person details who are using Top 1 & 2 mobile operator<br>");
+
+for(let i=0;i<person.length;i++)
+{
+    if(mobileOper[0].id==person[i].id)
+    {
+        document.write("<br>ID: "+person[i].id+"<br> Name: "+person[i].name+"<br> Operator ID: "+person[i].mobileOperator+"<br>");
+    }
+}
+
+for(let i=0;i<person.length;i++)
+{
+    if(mobileOper[1].id==person[i].id)
+    {
+        document.write("ID: "+person[i].id+"<br> Name: "+person[i].name+"<br> Operator ID: "+person[i].mobileOperator+"<br>");
+    }
+}
+    
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
